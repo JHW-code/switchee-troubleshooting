@@ -1,201 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>🛠️ Troubleshooting Builder</title>
+    <meta charset="UTF-8">
+    <title>🛠️ Troubleshooting Builder</title>
 
-  <link rel="manifest" href="../manifest.json"> 
-  <meta name="theme-color" content="#0056b3">
-  <link href="../global.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json"> <meta name="theme-color" content="#0056b3">
 
-  <style>
-    body { font-family: 'Poppins', sans-serif; margin: 40px; background: #f8f9fa; color: #333; }
-    .site-header { display: flex; align-items: center; background: #e6f0ff; padding: 10px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    .site-logo { width: 40px; margin-right: 12px; }
-    .site-title { font-size: 1.5rem; font-weight: 600; color: #0056b3; margin: 0; }
-    h1, h2 { text-align: center; color: #0056b3; margin-bottom: 20px; }
-    .back-menu { text-align: center; margin: 20px 0; }
-    .back-menu a { background: #e6f0ff; color: #0056b3; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-    .back-menu a:hover { background: #cce0ff; }
-    .container { max-width: 800px; margin: auto; }
-    section { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); margin-bottom: 30px; }
-    label { display: block; margin-top: 10px; font-weight: 600; }
-    input, textarea, select, button { width: 100%; margin: 8px 0; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
-    button { background: #e6f0ff; color: #0056b3; font-weight: 600; cursor: pointer; transition: 0.3s; }
-    button:hover { background: #cce0ff; }
-    iframe { width: 100%; height: 400px; border: 1px solid #ccc; border-radius: 6px; margin-top: 20px; }
-    #linkContainer { margin-top: 20px; }
-    #linkSnippet { width: 100%; height: 2em; }
-    .footer-menu { margin-top: 60px; text-align: center; }
-    .footer-menu a { background: #e6f0ff; color: #0056b3; padding: 12px 20px; margin: 0 6px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; }
-    .footer-menu a:hover { background: #cce0ff; }
-    .step-image { max-width: 300px; width: 100%; display: block; margin: 12px auto; border-radius: 8px; }
-  </style>
+    <link href="global.css" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+    /* (You can move this into global.css if you like) */
+    body { font-family: 'Poppins',sans-serif; margin: 40px; background: #f8f9fa; color: #333; }
+    .site-header{display:flex;align-items:center;background:#e6f0ff;padding:10px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);position:sticky;top:0;z-index:1000;}
+    .site-logo{width:40px;margin-right:12px;}
+    .site-title{font-size:1.5rem;font-weight:600;color:#0056b3;margin:0;}
+    h1,h2{text-align:center;color:#0056b3;margin-bottom:20px;}
+    .back-menu{margin:20px 0;text-align:center;}
+    .back-menu a{display:inline-block;background:#e6f0ff;color:#0056b3;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;}
+    .back-menu a:hover{background:#cce0ff;}
+    .container{max-width:800px;margin:auto;}
+    section{background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.05);margin-bottom:30px;}
+    label{display:block;margin-top:10px;font-weight:600;}
+    input,textarea,select,button{width:100%;margin:8px 0;padding:10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;}
+    button{background:#e6f0ff;color:#0056b3;font-weight:600;cursor:pointer;transition:0.3s;}
+    button:hover{background:#cce0ff;}
+    iframe{width:100%;height:400px;border:1px solid #ccc;border-radius:6px;margin-top:20px;}
+    #linkContainer{margin-top:20px;}
+    #linkSnippet{width:100%;height:2em;}
+    .footer-menu{margin-top:60px;text-align:center;}
+    .footer-menu a{display:inline-block;background:#e6f0ff;color:#0056b3;padding:12px 20px;margin:0 6px;border-radius:12px;text-decoration:none;font-weight:600;transition:0.3s;}
+    .footer-menu a:hover{background:#cce0ff;}
+    .step-image{max-width:300px;width:100%;display:block;margin:12px auto;border-radius:8px;}
+    </style>
 </head>
 <body>
 
-<header class="site-header">
-  <img src="../leaf.png" class="site-logo" alt="Leaf Logo">
-  <h1 class="site-title">🛠️ Troubleshooting Builder</h1>
-</header>
+    <header class="site-header">
+        <img src="leaf.png" class="site-logo" alt="Leaf Logo"> <h1 class="site-title">Troubleshooting Builder</h1>
+    </header>
 
-<div class="back-menu">
-  <a href="index.html">&larr; Back to Menu</a>
-</div>
+    <div class="back-menu">
+        <a href="index.html">&larr; Back to Menu</a> </div>
 
-<div class="container">
-  <h1>Builder</h1>
+    <div class="container">
+        <h1>Builder</h1>
 
-  <section>
-    <h2>Create or Edit Situation</h2>
+        <section>
+            <h2>Create or Edit Situation</h2>
 
-    <label for="editSelect">Select Situation to Edit (or leave blank for new):</label>
-    <select id="editSelect"><option value="">-- New Situation --</option></select>
+            <label for="editSelect">Select Situation to Edit (or leave blank for new):</label>
+            <select id="editSelect"><option value="">-- New Situation --</option></select>
 
-    <label for="title">Situation Title:</label>
-    <input id="title" placeholder="E.g., Situation X: Example Issue">
+            <label for="title">Situation Title:</label>
+            <input id="title" placeholder="E.g., Situation X: Example issue">
 
-    <div id="steps"></div>
+            <div id="steps"></div>
 
-    <button id="previewBtn">Preview Situation</button>
-    <button id="downloadBtn" style="display:none;">Download Situation</button>
+            <button id="previewBtn">Preview</button>
+            <button id="downloadBtn" style="display:none;">Download</button>
 
-    <div id="linkContainer" style="display:none;">
-      <label for="linkSnippet">Link to add in index.html:</label>
-      <textarea id="linkSnippet" readonly></textarea>
+            <div id="linkContainer" style="display:none;">
+                <label for="linkSnippet">Link to add in index.html:</label>
+                <textarea id="linkSnippet" readonly></textarea>
+            </div>
+
+            <iframe id="previewFrame"></iframe>
+        </section>
+
+        <section>
+            <h2>Delete Situation</h2>
+            <label for="deleteSelect">Select Situation to Delete:</label>
+            <select id="deleteSelect"><option value="">-- Choose --</option></select>
+            <button id="deleteBtn">Generate Delete Instructions</button>
+            <pre id="deleteInstructions" style="margin-top:20px;"></pre>
+        </section>
     </div>
 
-    <iframe id="previewFrame"></iframe>
-  </section>
+    <footer class="footer-menu">
+        <a href="builder.html">🛠️ Manage Situations</a>
+        <a href="index.html">Gen2</a>
+        <a href="history.html">📜 History</a>
+        <a href="mobile/index.html">📱 Mobile Issues</a>
+        <a href="econa/index.html">⚙️ Econa</a>
+    </footer>
 
-  <section>
-    <h2>Delete Situation</h2>
-    <label for="deleteSelect">Select Situation to Delete:</label>
-    <select id="deleteSelect"><option value="">-- Choose --</option></select>
-    <button id="deleteBtn">Generate Delete Instructions</button>
-    <pre id="deleteInstructions" style="margin-top:20px;"></pre>
-  </section>
-</div>
-
-<footer class="footer-menu">
-  <a href="builder.html">🛠️ Manage Situations</a>
-  <a href="../index.html">Gen2</a>
-  <a href="../history.html">📜 History</a>
-  <a href="../mobile/index.html">📱 Mobile Issues</a>
-  <a href="../econa/index.html">⚙️ Econa</a>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-  const resp = await fetch('index.html');
-  const doc = new DOMParser().parseFromString(await resp.text(),'text/html');
-  const pages = {};
-  doc.querySelectorAll('.menu a').forEach(a => {
-    pages[a.getAttribute('href')] = a.textContent.trim();
-  });
-
-  const editSelect = document.getElementById('editSelect');
-  const deleteSelect = document.getElementById('deleteSelect');
-  for (const [file,label] of Object.entries(pages)) {
-    editSelect.insertAdjacentHTML('beforeend', `<option value="${file}">${label}</option>`);
-    deleteSelect.insertAdjacentHTML('beforeend', `<option value="${file}">${label}</option>`);
-  }
-
-  const stepsDiv = document.getElementById('steps');
-  for (let i=1;i<=5;i++) {
-    stepsDiv.insertAdjacentHTML('beforeend', `
-      <label>Step ${i}:</label>
-      <input id="step${i}" placeholder="Step ${i} description...">
-      <label>Detail ${i}:</label>
-      <textarea id="detail${i}" rows="2" placeholder="Detail for step ${i}..."></textarea>
-      <label>Image (optional):</label>
-      <input type="file" id="img${i}" accept="image/*">
-    `);
-  }
-
-  editSelect.onchange = async () => {
-    const f = editSelect.value;
-    if (!f) {
-      document.getElementById('title').value = '';
-      for (let i=1;i<=5;i++) {
-        document.getElementById(`step${i}`).value = '';
-        document.getElementById(`detail${i}`).value = '';
-        document.getElementById(`img${i}`).value = '';
-      }
-      return;
-    }
-    const resp2 = await fetch(f);
-    const doc2 = new DOMParser().parseFromString(await resp2.text(),'text/html');
-    document.getElementById('title').value = doc2.querySelector('h1')?.textContent.trim() || '';
-    for (let i=1;i<=5;i++) {
-      const stepEl = doc2.querySelector(`.flow a[href="#section${i}"]`);
-      const detailEl = doc2.querySelector(`#section${i} p`);
-      document.getElementById(`step${i}`).value = stepEl?.textContent.trim() || '';
-      document.getElementById(`detail${i}`).value = detailEl?.textContent.trim() || '';
-      document.getElementById(`img${i}`).value = '';
-    }
-  };
-
-  async function buildHTML() {
-    const title = document.getElementById('title').value || 'New Situation';
-    let html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>${title}</title><link href="../global.css" rel="stylesheet"></head><body>
-<header class="site-header"><img src="../leaf.png" class="site-logo" alt="Leaf"><h1 class="site-title">${title}</h1></header><div class="flow">`;
-    for (let i=1;i<=5;i++) {
-      const step = document.getElementById(`step${i}`).value || `Step ${i}`;
-      html += `<a href="#section${i}">${step}</a>`;
-    }
-    html += `</div>`;
-    for (let i=1;i<=5;i++) {
-      const detail = document.getElementById(`detail${i}`).value || '';
-      html += `<section id="section${i}"><h2>Step ${i}</h2><p>${detail}</p>`;
-      const fi = document.getElementById(`img${i}`);
-      if (fi.files.length) {
-        const dataURL = await new Promise(res=>{
-          const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(fi.files[0]);
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        // 1) Load this folder’s own index.html menu
+        const resp = await fetch('index.html'); // index.html is in the root
+        const menuDoc = new DOMParser().parseFromString(await resp.text(),'text/html');
+        const pages = {};
+        menuDoc.querySelectorAll('.menu a').forEach(a => {
+            pages[a.getAttribute('href')] = a.textContent.trim();
         });
-        html += `<img src="${dataURL}" class="step-image" alt="Step ${i}">`;
-      }
-      html += `</section>`;
-    }
-    html += `<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script></body></html>`;
-    return html;
-  }
 
-  document.getElementById('previewBtn').onclick = async () => {
-    const html = await buildHTML();
-    const blob = new Blob([html], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    document.getElementById('previewFrame').src = url;
-    const dl = document.getElementById('downloadBtn');
-    dl.style.display = 'inline-block';
-    dl.onclick = () => {
-      const fn = (document.getElementById('title').value || 'new-situation').toLowerCase().replace(/\s+/g,'-')+'.html';
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = fn;
-      a.click();
-      document.getElementById('linkSnippet').value = `<a href="${fn}">${document.getElementById('title').value}</a>`;
-      document.getElementById('linkContainer').style.display = 'block';
-    };
-  };
+        // 2) Populate edit/delete selects
+        const editSelect = document.getElementById('editSelect');
+        const deleteSelect = document.getElementById('deleteSelect');
+        for (const [href,label] of Object.entries(pages)) {
+            editSelect.insertAdjacentHTML('beforeend',
+                `<option value="${href}">${label}</option>`);
+            deleteSelect.insertAdjacentHTML('beforeend',
+                `<option value="${href}">${label}</option>`);
+        }
 
-  document.getElementById('deleteBtn').onclick = () => {
-    const f = deleteSelect.value;
-    if (!f) {
-      document.getElementById('deleteInstructions').textContent = 'Please select a situation.';
-      return;
-    }
-    document.getElementById('deleteInstructions').textContent = `1) Delete "${f}".\n2) Remove link from index.html:\n<li><a href="${f}">${pages[f]}</a></li>`;
-  };
-});
-</script>
+        // 3) Inject 5 Step/Detail/Image inputs
+        const stepsDiv = document.getElementById('steps');
+        for (let i=1; i<=5; i++){
+            stepsDiv.insertAdjacentHTML('beforeend', `
+                <label for="step${i}">Step ${i}:</label>
+                <input id="step${i}" placeholder="Step ${i} description...">
+                <label for="detail${i}">Detail ${i}:</label>
+                <textarea id="detail${i}" rows="2" placeholder="Detail for step ${i}..."></textarea>
+                <label for="img${i}">Image (optional):</label>
+                <input type="file" id="img${i}" accept="image/*">
+            `);
+        }
 
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
-</script>
+        // 4) Prefill when editing
+        editSelect.onchange = async () => {
+            const file = editSelect.value;
+            if (!file) {
+                document.getElementById('title').value = '';
+                for (let i=1;i<=5;i++) {
+                    document.getElementById(`step${i}`).value = '';
+                    document.getElementById(`detail${i}`).value = '';
+                    document.getElementById(`img${i}`).value = '';
+                }
+                return;
+            }
+            const r2 = await fetch(file);
+            const d2 = new DOMParser().parseFromString(await r2.text(),'text/html');
+            document.getElementById('title').value = d2.querySelector('h1').textContent.trim();
+            for (let i=1;i<=5;i++){
+                const s = d2.querySelector(`.flow a[href="#section${i}"]`);
+                const p = d2.querySelector(`#section${i} p`);
+                document.getElementById(`step${i}`).value    = s ? s.textContent.trim() : '';
+                document.getElementById(`detail${i}`).value = p ? p.textContent.trim()    : '';
+                document.getElementById(`img${i}`).value     = '';
+            }
+        };
 
+        // 5) Build new situation HTML
+        async function buildHTML() {
+            const title = document.getElementById('title').value || 'New Situation';
+            let out = `<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>${title}</title>
+<link href="global.css" rel="stylesheet">
+<meta name="theme-color" content="#0056b3">
+<link rel="manifest" href="manifest.json">
+<style>
+    /* common flow css */
+    .flow{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:30px auto;}
+    .flow a{background:#e6f0ff;padding:18px;border-radius:15px;text-align:center;font-weight:600;color:#0056b3;text-decoration:none;transition:0.3s;}
+    .flow a:hover{background:#cce0ff;}
+    section{margin:40px auto;max-width:800px;background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.05);}
+    section h2{text-align:left;margin-bottom:10px;}section p{line-height:1.6;}
+    .back-menu{text-align:center;margin:20px;} .back-menu a{background:#e6f0ff;color:#0056b3;padding:10px 20px;border-radius:8px;text-decoration:none;}
+</style></head><body>
+    <header class="site-header"><img src="leaf.png" class="site-logo" alt="Leaf"><h1 class="site-title">${title}</h1></header>
+    <div class="back-menu"><a href="index.html">&larr; Back to Menu</a></div>
+    <div class="flow">`;
+            // links
+            for (let i=1;i<=5;i++){
+                out += `<a href="#section${i}">${document.getElementById(`step${i}`).value || `Step ${i}`}</a>`;
+            }
+            out += `</div>`;
+            // details + optional pictures
+            for (let i=1;i<=5;i++){
+                out += `<section id="section${i}"><h2>Step ${i}</h2><p>${document.getElementById(`detail${i}`).value||''}</p>`;
+                const fi = document.getElementById(`img${i}`);
+                if (fi.files.length) {
+                    const dataURL = await new Promise(res=>{
+                        const r=new FileReader(); r.onload=e=>res(e.target.result);
+                        r.readAsDataURL(fi.files[0]);
+                    });
+                    out += `<img src="${dataURL}" class="step-image" alt="Step ${i} image">`;
+                }
+                out += `</section>`;
+            }
+            out += `<footer class="footer-menu">
+    <a href="builder.html">🛠️ Manage Situations</a>
+    <a href="index.html">Gen2</a>
+    <a href="history.html">📜 History</a>
+    <a href="mobile/index.html">📱 Mobile Issues</a>
+    <a href="econa/index.html">⚙️ Econa</a>
+</footer>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body></html>`;
+            return out;
+        }
+
+        // 6) Preview & Download
+        document.getElementById('previewBtn').onclick = async () => {
+            const html = await buildHTML();
+            const blob = new Blob([html],{type:'text/html'});
+            const url  = URL.createObjectURL(blob);
+            document.getElementById('previewFrame').src = url;
+            const dl = document.getElementById('downloadBtn');
+            dl.style.display = 'inline-block';
+            dl.onclick = () => {
+                const fn = (document.getElementById('title').value||'new-situation').toLowerCase().replace(/\s+/g,'-')+'.html';
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fn; a.click();
+                document.getElementById('linkSnippet').value = `<a href="${fn}">${document.getElementById('title').value}</a>`;
+                document.getElementById('linkContainer').style.display = 'block';
+            };
+        };
+
+        // 7) Delete instructions
+        document.getElementById('deleteBtn').onclick = () => {
+            const f = deleteSelect.value;
+            if (!f) {
+                document.getElementById('deleteInstructions').textContent = 'Please select a situation to delete.';
+                return;
+            }
+            document.getElementById('deleteInstructions').textContent =
+                `1) Delete "${f}".\n2) Remove from index.html:\n<li><a href="${f}">${pages[f]}</a></li>`;
+        };
+    });
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+    </script>
 </body>
 </html>
