@@ -1,73 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0056b3">
   <meta charset="UTF-8">
-  <title>Switchee Troubleshooting - Main Menu (Luxury)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 40px;
-      background: #f8f9fa;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #0056b3;
-    }
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .menu a {
-      background: #e6f0ff;
-      color: #0056b3;
-      text-decoration: none;
-      padding: 20px;
-      border-radius: 15px;
-      font-size: 1.3em;
-      font-weight: 600;
-      text-align: center;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-    .menu a:hover {
-      background: #cce0ff;
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      margin-top: 60px;
-      text-align: center;
-    }
-    footer a {
-      background: #e6f0ff;
-      color: #0056b3;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.3s;
-      display: inline-block;
-    }
-    footer a:hover {
-      background: #cce0ff;
-    }
-  </style>
+  <title>Switchee Troubleshooting — Main Menu</title>
+  <link href="global.css" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0056b3">
 </head>
 <body>
 
-  <h1>Switchee Troubleshooting - Main Menu</h1>
+  <!-- LEAF HEADER -->
+  <header class="site-header">
+    <img src="leaf.png" class="site-logo" alt="Leaf Logo">
+    <h1 class="site-title">Switchee Troubleshooting</h1>
+  </header>
+  <!-- /LEAF HEADER -->
+
+  <h1>Switchee Troubleshooting — Main Menu</h1>
 
   <div class="menu">
     <a href="situation1.html">🔥 Situation 1: Heating not working</a>
@@ -79,10 +28,17 @@
     <a href="situation6.html">💧 Situation 6: Hot water coming on without asking</a>
   </div>
 
-  <footer>
+  <footer class="footer-menu">
     <a href="builder.html">🛠️ Manage Situations</a>
+    <a href="history.html">📜 History</a>
+    <a href="mobile/index.html">📱 Mobile Issues</a>
+    <a href="econa/index.html">⚙️ Econa</a>
   </footer>
 
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>
