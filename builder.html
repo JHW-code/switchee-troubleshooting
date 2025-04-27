@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0056b3">
+  <meta charset="UTF-8">
+  <title>Switchee Troubleshooting Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 40px; background: #f8f9fa; color: #333; }
+    h1,h2 { color: #0056b3; text-align: center; margin-bottom: 20px; }
+    .back-menu { text-align: center; margin-bottom: 20px; }
+    .back-menu a {
+      background: #e6f0ff; color: #0056b3; text-decoration: none;
+      padding: 10px 20px; border-radius: 8px; font-weight:600;
+      transition: 0.3s; display: inline-block;
+    }
+    .back-menu a:hover { background: #cce0ff; }
+    .container { max-width: 800px; margin: auto; }
+    section { background: #fff; padding: 20px; border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05); margin-bottom: 30px; }
+    label { display: block; margin-top: 10px; font-weight: 600; }
+    input, textarea, select, button {
+      font-family: 'Poppins', sans-serif; width: 100%; margin: 8px 0;
+      padding: 10px; border: 1px solid #ccc; border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #e6f0ff; color: #0056b3; font-weight: 600;
+      cursor: pointer; transition: 0.3s;
+    }
+    button:hover { background: #cce0ff; }
+    iframe {
+      width: 100%; height: 400px; border: 1px solid #ccc;
+      border-radius: 6px; margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-menu">
+    <a href="index.html">&larr; Back to Main Menu</a>
+  </div>
+
+  <div class="container">
+    <h1>Switchee Troubleshooting Builder</h1>
+
+    <!-- Create / Edit Section -->
+    <section>
+      <h2>Create or Edit Situation</h2>
+
+      <label for="editSelect">Select Situation to Edit (or leave blank to create new):</label>
+      <select id="editSelect">
+        <option value="">-- New Situation --</option>
+      </select>
+
+      <label for="title">Situation Title:</label>
+      <input id="title" placeholder="e.g., Situation 7: Thermostat offline" />
+
+      <div id="steps"></div>
+
+      <button id="previewBtn">Preview Situation</button>
+      <button id="downloadBtn" style="display:none;">Download Situation Page</button>
+      <iframe id="previewFrame"></iframe>
+    </section>
+
+    <!-- Delete Section -->
+    <section>
+      <h2>Delete Existing Situation</h2>
+
+      <label for="deleteSelect">Select Situation to Delete:</label>
+      <select id="deleteSelect">
+        <option value="">-- Choose --</option>
+      </select>
+
+      <button id="deleteBtn">Generate Delete Instructions</button>
+      <pre id="deleteInstructions" style="margin-top:20px;"></pre>
+    </section>
+  </div>
+
+  <div class="back-menu">
+    <a href="index.html">&larr; Back to Main Menu</a>
+  </div>
+
+  <script>
+    // Common CSS to embed
+    const common_css = `
+body{font-family:'Poppins',sans-serif;margin:40px;background:#f8f9fa;color:#333;}
+h1,h2{text-align:center;color:#0056b3;}
+.back-menu{margin-bottom:30px;text-align:center;}
+.back-menu a{background:#e6f0ff;color:#0056b3;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:600;transition:0.3s;display:inline-block;}
+.back-menu a:hover{background:#cce0ff;transform:scale(1.05);}
+.flow{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:30px auto;}
+.flow a{background:#e6f0ff;padding:18px;border-radius:15px;text-align:center;font-size:1.2em;font-weight:600;color:#0056b3;text-decoration:none;transition:0.3s;box-shadow:0 4px 6px rgba(0,0,0,0.05);}
+.flow a:hover{background:#cce0ff;transform:scale(1.05);box-shadow:0 6px 12px rgba(0,0,0,0.1);}
+section{margin-top:40px;background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.05);max-width:800px;margin:40px auto;}
+section h2{text-align:left;margin-bottom:10px;}
+section p{font-size:1em;line-height:1.6;}
+`;
+
+    // Inject step/detail inputs
+    const steps = document.getElementById('steps');
+    for (let i = 1; i <= 5; i++) {
+      steps.insertAdjacentHTML('beforeend', `
+        <label>Step ${i}:</label>
+        <input id="step${i}" placeholder="Step ${i} description..." />
+        <label>Detail ${i}:</label>
+        <textarea id="detail${i}" rows="2" placeholder="Detail for step ${i}..."></textarea>
+      `);
+    }
+
+    // Pages map
+    const pages = {
+      "situation1.html": "🔥 Situation 1",
+      "situation2.html": "💧 Situation 2",
+      "situation3.html": "💧 Situation 3",
+      "situation4-1.html": "⚡ Situation 4.1",
+      "situation4-2.html": "⚡ Situation 4.2",
+      "situation5.html": "🔥 Situation 5",
+      "situation6.html": "💧 Situation 6"
+    };
+
+    // Populate dropdowns
+    const editSelect   = document.getElementById('editSelect');
+    const deleteSelect = document.getElementById('deleteSelect');
+    for (const file in pages) {
+      editSelect.insertAdjacentHTML('beforeend',
+        `<option value="${file}">${pages[file]}</option>`);
+      deleteSelect.insertAdjacentHTML('beforeend',
+        `<option value="${file}">${pages[file]}</option>`);
+    }
+
+    // Prefill for editing
+    editSelect.onchange = async () => {
+      const file = editSelect.value;
+      if (!file) {
+        document.getElementById('title').value = '';
+        for (let i = 1; i <= 5; i++) {
+          document.getElementById(`step${i}`).value = '';
+          document.getElementById(`detail${i}`).value = '';
+        }
+        return;
+      }
+      const resp = await fetch(file);
+      const doc  = new DOMParser().parseFromString(await resp.text(),'text/html');
+      document.getElementById('title').value = doc.querySelector('h1').textContent.trim();
+      for (let i = 1; i <= 5; i++) {
+        const stepEl   = doc.querySelector(`.flow a[href="#section${i}"]`);
+        const detailEl = doc.querySelector(`#section${i} p`);
+        document.getElementById(`step${i}`).value   = stepEl   ? stepEl.textContent.trim() : '';
+        document.getElementById(`detail${i}`).value = detailEl ? detailEl.textContent.trim() : '';
+      }
+    };
+
+    // Build HTML
+    function buildHTML() {
+      const title = document.getElementById('title').value || 'New Situation';
+      let html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0056b3"><meta charset="UTF-8"><title>${title}</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"><style>${common_css}</style></head>
+<body>
+  <div class="back-menu"><a href="index.html">&larr; Back to Main Menu</a></div>
+  <h1>${title}</h1>
+  <div class="flow">`;
+      for (let i = 1; i <= 5; i++) {
+        const step = document.getElementById(`step${i}`).value || `Step ${i}`;
+        html += `<a href="#section${i}">${step}</a>`;
+      }
+      html += `</div>`;
+      for (let i = 1; i <= 5; i++) {
+        const detail = document.getElementById(`detail${i}`).value || '';
+        html += `<section id="section${i}"><h2>Step ${i}</h2><p>${detail}</p></section>`;
+      }
+      html += `
+  <div class="back-menu"><a href="index.html">&larr; Back to Main Menu</a></div>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+</body>
+</html>`;
+      return html;
+    }
+
+    // Preview & Download
+    document.getElementById('previewBtn').onclick = () => {
+      const blob = new Blob([buildHTML()], { type: 'text/html' });
+      const url  = URL.createObjectURL(blob);
+      document.getElementById('previewFrame').src = url;
+      const btn = document.getElementById('downloadBtn');
+      btn.style.display = 'inline-block';
+      btn.onclick = () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (document.getElementById('title').value || 'new-situation')
+                     .toLowerCase().replace(/\s+/g,'-') + '.html';
+        a.click();
+      };
+    };
+
+    // Delete instructions
+    document.getElementById('deleteBtn').onclick = () => {
+      const file = deleteSelect.value;
+      if (!file) {
+        document.getElementById('deleteInstructions').textContent =
+          'Please select a situation to delete.';
+        return;
+      }
+      document.getElementById('deleteInstructions').textContent =
+        `1) Delete the file "${file}" from your folder.\n` +
+        `2) Remove this line from index.html:\n` +
+        `<li><a href="${file}">${pages[file]}</a></li>`;
+    };
+  </script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+</body>
+</html>
