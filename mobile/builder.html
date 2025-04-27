@@ -2,67 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📱 Mobile Issues Troubleshooting Builder</title>
-
-  <!-- PWA manifest & theme color -->
-  <link rel="manifest" href="../manifest.json">
-  <meta name="theme-color" content="#0056b3">
-
-  <!-- Global stylesheet -->
+  <title>Mobile Issues Troubleshooting Builder</title>
   <link href="../global.css" rel="stylesheet">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* Compact builder styles */
+  <meta name="viewport" content="width=device-width, initial-scale=1">  <style>
+    /* HEADER STYLES */
+    .site-header {
+      display: flex; align-items: center;
+      background: #e6f0ff; padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .site-logo { width: 32px; height: auto; margin-right: 10px; }
+    .site-title {
+      font-family: 'Poppins', sans-serif; font-size: 1.4rem;
+      font-weight: 600; color: #0056b3; margin: 0;
+    }
+    @media (max-width: 600px) {
+      .site-header { padding: 8px 12px; }
+      .site-logo { width: 24px; margin-right: 8px; }
+      .site-title { font-size: 1.2rem; }
+    }
+    /* BUILDER STYLES */
     body { font-family: 'Poppins', sans-serif; margin: 40px; background: #f8f9fa; color: #333; }
-    .site-header { display: flex; align-items: center; background: #e6f0ff; padding: 10px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    .site-logo { width: 40px; margin-right: 12px; }
-    .site-title { font-size: 1.5rem; font-weight: 600; color: #0056b3; margin: 0; }
-    @media (max-width:600px){ .site-logo{width:30px;} .site-title{font-size:1.2rem;} }
-    h1,h2 { text-align: center; color: #0056b3; margin-bottom: 20px; }
-    .back-menu { text-align: center; margin: 20px 0; }
-    .back-menu a { background: #e6f0ff; color: #0056b3; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-    .back-menu a:hover { background: #cce0ff; }
-    .container { max-width: 800px; margin: auto; }
-    section { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); margin-bottom: 30px; }
-    label { display: block; margin-top: 10px; font-weight: 600; }
-    input, textarea, select, button { width: 100%; margin: 8px 0; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
-    button { background: #e6f0ff; color: #0056b3; font-weight: 600; cursor: pointer; transition: 0.3s; }
-    button:hover { background: #cce0ff; }
-    iframe { width: 100%; height: 400px; border: 1px solid #ccc; border-radius: 6px; margin-top: 20px; }
-    #linkContainer { margin-top: 20px; }
-    #linkSnippet { width: 100%; height: 2em; }
-    .footer-menu { margin-top: 60px; text-align: center; }
-    .footer-menu a { background: #e6f0ff; color: #0056b3; padding: 12px 20px; margin: 0 6px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-    .footer-menu a:hover { background: #cce0ff; }
-    .step-image { max-width: 300px; width: 100%; display: block; margin: 12px auto; border-radius: 8px; }
+    h1,h2 { color: #0056b3; text-align: center; margin-bottom: 20px; }
+    .back-menu { text-align: center; margin-bottom: 20px; }
+    .container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    section { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+    section:last-child { border-bottom: none; }
+    label { display: block; margin-bottom: 5px; color: #555; }
+    input[type="text"], textarea, select { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+    button { background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+    button:hover { background-color: #004494; }
+    pre { background-color: #f0f0f0; padding: 10px; overflow-x: auto; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    iframe { width: 100%; height: 400px; border: 1px solid #ddd; border-radius: 4px; }
   </style>
 </head>
 <body>
 
-  <!-- Leaf header -->
   <header class="site-header">
-    <img src="../leaf.png" class="site-logo" alt="Leaf Logo">
-    <h1 class="site-title">📱 Mobile Issues Troubleshooting Builder</h1>
+    <img src="../leaf.png" alt="Leaf Logo" class="site-logo">
+    <h1 class="site-title">📱 Mobile Issues Builder</h1>
   </header>
-
   <div class="back-menu">
     <a href="index.html">&larr; Back to Mobile Menu</a>
   </div>
 
   <div class="container">
-    <h1>Builder</h1>
-
-    <!-- Create / Edit -->
     <section>
-      <h2>Create or Edit Mobile Situation</h2>
+      <h2>Create or Edit Situation</h2>
       <label for="editSelect">Select Situation to Edit (or leave blank to create new):</label>
       <select id="editSelect"><option value="">-- New Situation --</option></select>
 
       <label for="title">Situation Title:</label>
-      <input id="title" placeholder="E.g., Situation M2: Bluetooth pairing">
+      <input id="title" placeholder="e.g., Situation M2: Cannot connect to Wi-Fi">
 
       <div id="steps"></div>
 
@@ -70,182 +66,236 @@
       <button id="downloadBtn" style="display:none;">Download Situation Page</button>
 
       <div id="linkContainer" style="display:none;">
-        <label for="linkSnippet">Copy this link into mobile/index.html:</label>
+        <label for="linkSnippet">Copy this link into index.html:</label>
         <textarea id="linkSnippet" readonly></textarea>
       </div>
 
       <iframe id="previewFrame"></iframe>
     </section>
 
-    <!-- Delete -->
     <section>
-      <h2>Delete Mobile Situation</h2>
+      <h2>Delete Existing Situation</h2>
       <label for="deleteSelect">Select Situation to Delete:</label>
       <select id="deleteSelect"><option value="">-- Choose --</option></select>
       <button id="deleteBtn">Generate Delete Instructions</button>
-      <pre id="deleteInstructions" style="margin-top:20px;"></pre>
+      <pre id="deleteInstructions"></pre>
     </section>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer-menu">
-    <a href="builder.html">🛠️ Manage Mobile Situations</a>
-    <a href="../index.html">Gen2</a>
-    <a href="../history.html">📜 History</a>
-    <a href="../econa/index.html">⚙️ Econa</a>
-  </footer>
-
-  <!-- Builder Logic -->
   <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-      // 1) Fetch current mobile menu links
-      const resp = await fetch('index.html');
-      const doc  = new DOMParser().parseFromString(await resp.text(),'text/html');
-      const pages = {};
-      doc.querySelectorAll('.menu a').forEach(a => {
-        pages[a.getAttribute('href')] = a.textContent.trim();
-      });
-
-      // 2) Populate dropdowns
+    (async ()=>{
+      const stepsDiv = document.getElementById('steps');
       const editSelect = document.getElementById('editSelect');
       const deleteSelect = document.getElementById('deleteSelect');
-      for (const [file,label] of Object.entries(pages)) {
-        editSelect.insertAdjacentHTML('beforeend',
-          `<option value="${file}">${label}</option>`);
-        deleteSelect.insertAdjacentHTML('beforeend',
-          `<option value="${file}">${label}</option>`);
+      const pages = {};
+
+      // Load existing pages
+      try {
+        const res = await fetch('index.html');
+        const text = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const links = doc.querySelectorAll('.menu a');
+        links.forEach(link=>{
+          const file = link.getAttribute('href');
+          const label = link.textContent;
+          pages[file] = label;
+          const opt  = `<option value="${file}">${label}</option>`;
+          editSelect.insertAdjacentHTML('beforeend', opt);
+          deleteSelect.insertAdjacentHTML('beforeend', opt);
+        });
+      } catch (err) {
+        console.warn(err);
       }
 
-      // 3) Inject step/detail/image inputs
-      const stepsDiv = document.getElementById('steps');
-      for (let i=1; i<=5; i++) {
-        stepsDiv.insertAdjacentHTML('beforeend', `
-          <label for="step${i}">Step ${i}:</label>
-          <input id="step${i}" placeholder="Step ${i} description...">
-          <label for="detail${i}">Detail ${i}:</label>
-          <textarea id="detail${i}" rows="2" placeholder="Detail for step ${i}..."></textarea>
-          <label for="img${i}">Image for Step ${i} (optional):</label>
-          <input type="file" id="img${i}" accept="image/*">
-        `);
-      }
+      // Add new step
+      document.getElementById('addStep').onclick = ()=>{
+        const num = stepsDiv.children.length + 1;
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <label for="heading${num}">Step ${num} Heading:</label>
+          <input id="heading${num}">
+          <label for="content${num}">Step ${num} Content:</label>
+          <textarea id="content${num}"></textarea>
+        `;
+        stepsDiv.appendChild(div);
+      };
 
-      // 4) Prefill on edit
-      editSelect.onchange = async () => {
-        const f = editSelect.value;
-        if (!f) {
-          document.getElementById('title').value = '';
-          for (let i=1; i<=5; i++){
-            document.getElementById(`step${i}`).value = '';
-            document.getElementById(`detail${i}`).value = '';
-            document.getElementById(`img${i}`).value = '';
-          }
-          return;
-        }
-        const pageResp = await fetch(f);
-        const pageDoc  = new DOMParser().parseFromString(await pageResp.text(),'text/html');
-        document.getElementById('title').value = pageDoc.querySelector('h1').textContent.trim();
-        for (let i=1; i<=5; i++) {
-          const stepEl   = pageDoc.querySelector(`.flow a[href="#section${i}"]`);
-          const detailEl = pageDoc.querySelector(`#section${i} p`);
-          document.getElementById(`step${i}`).value   = stepEl   ? stepEl.textContent.trim() : '';
-          document.getElementById(`detail${i}`).value = detailEl ? detailEl.textContent.trim() : '';
-          document.getElementById(`img${i}`).value    = '';
+      // Populate form for editing
+      editSelect.onchange = async ()=>{
+        stepsDiv.innerHTML = ''; // clear
+        const file = editSelect.value;
+        if (!file) return;
+
+        document.getElementById('title').value = pages[file];
+
+        try {
+          const res = await fetch(file);
+          const text = await res.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'text/html');
+          const sections = doc.querySelectorAll('section');
+          sections.forEach((section,i)=>{
+            const num = i+1;
+            const heading = section.querySelector('h2').textContent;
+            const content = section.querySelector('p').textContent;
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <label for="heading${num}">Step ${num} Heading:</label>
+              <input id="heading${num}" value="${heading}">
+              <label for="content${num}">Step ${num} Content:</label>
+              <textarea id="content${num}">${content}</textarea>
+            `;
+            stepsDiv.appendChild(div);
+          });
+        } catch (err) {
+          console.warn(err);
         }
       };
 
-      // 5) Function to compose HTML
-      async function buildHTML() {
-        const title = document.getElementById('title').value || 'New Situation';
-        let html  = `<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>${title}</title>
-<link href="../global.css" rel="stylesheet">
-<link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#0056b3">
-<style>
-  /* common flow CSS */
-  .flow{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:30px auto;}
-  .flow a{background:#e6f0ff;padding:18px;border-radius:15px;text-align:center;font-size:1.2em;font-weight:600;color:#0056b3;text-decoration:none;transition:0.3s;}
-  .flow a:hover{background:#cce0ff;}
-  section{margin:40px auto;max-width:800px;background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.05);}
-  section h2{text-align:left;margin-bottom:10px;}
-  section p{line-height:1.6;}
-  .back-menu{text-align:center;margin:20px;}
-  .back-menu a{background:#e6f0ff;color:#0056b3;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;transition:0.3s;}
-  .back-menu a:hover{background:#cce0ff;}
-</style></head><body>
-  <header class="site-header"><img src="../leaf.png" class="site-logo" alt="Leaf"><h1 class="site-title">${title}</h1></header>
-  <div class="back-menu"><a href="index.html">&larr; Back to Mobile Menu</a></div>
-  <div class="flow">`;
-        // step links
-        for (let i=1; i<=5; i++){
-          const txt = document.getElementById(`step${i}`).value || `Step ${i}`;
-          html += `<a href="#section${i}">${txt}</a>`;
-        }
-        html += `</div>`;
-        // details + images
-        for (let i=1; i<=5; i++){
-          const d = document.getElementById(`detail${i}`).value || '';
-          html += `<section id="section${i}"><h2>Step ${i}</h2><p>${d}</p>`;
-          const fi = document.getElementById(`img${i}`);
-          if (fi.files.length) {
-            const dataURL = await new Promise(res=>{
-              const r = new FileReader();
-              r.onload = e=>res(e.target.result);
-              r.readAsDataURL(fi.files[0]);
-            });
-            html += `<img src="${dataURL}" class="step-image" alt="Step ${i} image">`;
-          }
-          html += `</section>`;
-        }
-        html += `<footer class="footer-menu">
-  <a href="builder.html">🛠️ Manage Mobile Situations</a>
-  <a href="../index.html">Gen2</a>
-  <a href="../history.html">📜 History</a>
-  <a href="../econa/index.html">⚙️ Econa</a>
-</footer>
-<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-</body></html>`;
-        return html;
-      }
-
-      // 6) Preview & Download
-      document.getElementById('previewBtn').onclick = async () => {
+      // Preview
+      document.getElementById('previewBtn').onclick = async ()=>{
         const content = await buildHTML();
-        const blob    = new Blob([content], {type:'text/html'});
+        const blob    = new Blob([content],{type:'text/html'});
         const url     = URL.createObjectURL(blob);
         document.getElementById('previewFrame').src = url;
-        const dl      = document.getElementById('downloadBtn');
-        dl.style.display = 'inline-block';
-        dl.onclick = () => {
+        const dlBtn   = document.getElementById('downloadBtn');
+        dlBtn.style.display = 'inline-block';
+        document.getElementById('linkContainer').style.display = 'none';
+
+        dlBtn.onclick = () => {
           const a = document.createElement('a');
           a.href = url;
-          const fn = (document.getElementById('title').value || 'new-situation')
-                       .toLowerCase().replace(/\s+/g,'-') + '.html';
-          a.download = fn;
+          const filename = (document.getElementById('title').value||'new-situation')
+                             .toLowerCase().replace(/\s+/g,'-') + '.html';
+          a.download = filename;
           a.click();
-          document.getElementById('linkSnippet').value = `<a href="${fn}">${document.getElementById('title').value}</a>`;
+
+          // Auto-add new page to selects
+          const label = document.getElementById('title').value;
+          if (!pages[filename]) {
+            pages[filename] = label;
+            const opt  = `<option value="${filename}">${label}</option>`;
+            editSelect.insertAdjacentHTML('beforeend', opt);
+            deleteSelect.insertAdjacentHTML('beforeend', opt);
+          }
+
+          // Show copy-paste snippet
+          document.getElementById('linkSnippet').value = `<a href="${filename}">${label}</a>`;
           document.getElementById('linkContainer').style.display = 'block';
         };
       };
 
-      // 7) Delete instructions
-      document.getElementById('deleteBtn').onclick = () => {
-        const f = deleteSelect.value;
-        if (!f) {
+      // Download
+      document.getElementById('downloadBtn').onclick = async ()=>{
+        const content = await buildHTML();
+        const blob    = new Blob([content],{type:'text/html'});
+        const url     = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const filename = (document.getElementById('title').value||'new-situation')
+                           .toLowerCase().replace(/\s+/g,'-') + '.html';
+        a.download = filename;
+        a.click();
+      };
+
+      // Build HTML
+      async function buildHTML(){
+        let html = `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <link href="../global.css" rel="stylesheet">
+            <meta charset="UTF-8">
+            <title>${document.getElementById('title').value}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">  </head>
+          <body>
+
+            <header class="site-header">
+              <img src="../leaf.png" alt="Leaf Logo" class="site-logo">
+              <h1 class="site-title">${document.getElementById('title').value}</h1>
+            </header>
+            <div class="back-menu"><a href="index.html">&larr; Back to Mobile Menu</a></div>
+            <div class="flow">
+        `;
+        for (let i=0; i<stepsDiv.children.length; i++) {
+          const num = i+1;
+          const heading = document.getElementById(`heading${num}`).value;
+          const content = document.getElementById(`content${num}`).value;
+          html += `
+              <a href="#section${num}">${num}. ${heading}</a>
+          `;
+        }
+        html += `
+            </div>
+        `;
+        for (let i=0; i<stepsDiv.children.length; i++) {
+          const num = i+1;
+          const heading = document.getElementById(`heading${num}`).value;
+          const content = document.getElementById(`content${num}`).value;
+          html += `
+            <section id="section${num}">
+              <h2>${num}. ${heading}</h2>
+              <p>${content}</p>
+            </section>
+          `;
+        }
+        html += `
+          <div class="back-menu"><a href="index.html">&larr; Back to Mobile Menu</a></div>
+
+          </body>
+          </html>
+        `;
+        return html;
+      }
+
+      // Initial UI
+      document.getElementById('addStep').click();
+      document.getElementById('previewBtn').onclick = async ()=>{
+        const content = await buildHTML();
+        const blob    = new Blob([content],{type:'text/html'});
+        const url     = URL.createObjectURL(blob);
+        document.getElementById('previewFrame').src = url;
+        const dlBtn   = document.getElementById('downloadBtn');
+        dlBtn.style.display = 'inline-block';
+        document.getElementById('linkContainer').style.display = 'none';
+
+        dlBtn.onclick = () => {
+          const a = document.createElement('a');
+          a.href = url;
+          const filename = (document.getElementById('title').value||'new-situation')
+                             .toLowerCase().replace(/\s+/g,'-') + '.html';
+          a.download = filename;
+          a.click();
+
+          // Auto-add new page to selects
+          const label = document.getElementById('title').value;
+          if (!pages[filename]) {
+            pages[filename] = label;
+            const opt  = `<option value="${filename}">${label}</option>`;
+            editSelect.insertAdjacentHTML('beforeend', opt);
+            deleteSelect.insertAdjacentHTML('beforeend', opt);
+          }
+
+          // Show copy-paste snippet
+          document.getElementById('linkSnippet').value = `<a href="${filename}">${label}</a>`;
+          document.getElementById('linkContainer').style.display = 'block';
+        };
+      };
+
+      // Delete instructions
+      document.getElementById('deleteBtn').onclick = ()=>{\
+        const file = deleteSelect.value;
+        if (!file) {
           document.getElementById('deleteInstructions').textContent = 'Please select a situation to delete.';
           return;
         }
         document.getElementById('deleteInstructions').textContent =
-          `1) Delete "${f}".\n2) Remove this line from mobile/index.html:\n<li><a href="${f}">${pages[f]}</a></li>`;
+          `1) Delete the file "${file}".\\n` +
+          `2) Remove this line from index.html:\\n` +
+          `<li><a href="${file}">${pages[file]}</a></li>`;
       };
-    });
-  </script>
-
-  <!-- Register SW -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
+    })();
   </script>
 </body>
 </html>

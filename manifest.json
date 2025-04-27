@@ -1,18 +1,20 @@
 {
-  "name": "Switchee Troubleshooting Suite",
-  "short_name": "Switchee PWA",
-  "start_url": "./index.html",
+  "name": "Switchee Troubleshooting",
+  "short_name": "Switchee Help",
+  "description": "Troubleshooting guide for Switchee devices, covering main, Econa, and mobile issues.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#f8f9fa",
+  "background_color": "#e6f0ff",
   "theme_color": "#0056b3",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "leaf.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "leaf.png",
       "sizes": "512x512",
       "type": "image/png"
     }

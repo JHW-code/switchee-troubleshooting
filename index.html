@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Switchee Troubleshooting — Main Menu</title>
   <link href="global.css" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0056b3">
+  <meta charset="UTF-8">
+  <title>Switchee Troubleshooting - Main Menu (Luxury)</title>
+  <link rel="manifest" href="manifest.json"> <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-  <!-- LEAF HEADER -->
   <header class="site-header">
-    <img src="leaf.png" class="site-logo" alt="Leaf Logo">
+    <img src="leaf.png" alt="Leaf Logo" class="site-logo">
     <h1 class="site-title">Switchee Troubleshooting</h1>
   </header>
-  <!-- /LEAF HEADER -->
-
-  <h1>Switchee Troubleshooting — Main Menu</h1>
+  <h1>Switchee Troubleshooting - Main Menu</h1>
 
   <div class="menu">
     <a href="situation1.html">🔥 Situation 1: Heating not working</a>
@@ -26,19 +22,23 @@
     <a href="situation4-2.html">⚡ Situation 4.2: Frozen screen (hard-wired powered)</a>
     <a href="situation5.html">🔥 Situation 5: Heating coming on without asking</a>
     <a href="situation6.html">💧 Situation 6: Hot water coming on without asking</a>
+    <a href="test.html">Test</a>
   </div>
 
   <footer class="footer-menu">
     <a href="builder.html">🛠️ Manage Situations</a>
     <a href="history.html">📜 History</a>
-    <a href="mobile/index.html">📱 Mobile Issues</a>
     <a href="econa/index.html">⚙️ Econa</a>
+    <a href="mobile/index.html">📱 Mobile Issues</a>
   </footer>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+    if ('serviceWorker' in navigator) {  // Add this block
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
     }
   </script>
+
 </body>
 </html>
